@@ -31,16 +31,14 @@ $encryptor = new encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
 // ...
 
 // somepage.php
-require __DIR__"/vendor/autoload.php";
-use cmdstr/encrypt/encryption;
+require_once "config.php";
 
 $var = /* some value that needs encrypted */;
 $encryptedVar = $encryptor->encrypt($var);
 // ...
 
 // someotherpage.php
-require __DIR__"/vendor/autoload.php";
-use cmdstr/encrypt/encryption;
+require_once "config.php";
 
 $encryptedVar = /* retrieved encryptedVar from somepage.php */;
 $decryptedVar = $encryptor->decrypt($encryptedVar);
@@ -57,6 +55,7 @@ $encrypt = [
 // ...
 
 // somepage.php
+require_once "config.php";
 $var = /* some value that needs encrypted */;
 
 $alphabet = [
@@ -78,6 +77,7 @@ $encryptedVar = openssl_encrypt($data, $encrypt["method"], $encrypt["passphrase"
 // ...
 
 // someotherpage.php
+require_once "config.php";
 $encryptedVar = /* retrieved encryptedVar from somepage.php */;
 $parts = explode(":", $encryptedVar);
 
