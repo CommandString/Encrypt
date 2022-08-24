@@ -1,0 +1,15 @@
+{
+    "name": "cmdstr/encrypt",
+    "description": "A simpler way to encrypt data",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Snedeker"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    }
+}
