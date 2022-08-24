@@ -31,14 +31,16 @@ $encryptor = new encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
 // ...
 
 // somepage.php
-require_once "config.php";
+require __DIR__"/vendor/autoload.php";
+use cmdstr/encrypt/encryption;
 
 $var = /* some value that needs encrypted */;
 $encryptedVar = $encryptor->encrypt($var);
 // ...
 
 // someotherpage.php
-require_once "config.php";
+require __DIR__"/vendor/autoload.php";
+use cmdstr/encrypt/encryption;
 
 $encryptedVar = /* retrieved encryptedVar from somepage.php */;
 $decryptedVar = $encryptor->decrypt($encryptedVar);
