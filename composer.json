@@ -8,6 +8,11 @@
             "name": "Robert Snedeker"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "cmdstr\\encrypt\\": "src/"
+        }
+    },
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0"
