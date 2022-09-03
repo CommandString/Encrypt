@@ -1,5 +1,5 @@
 
-# [cmdstr/encrypt](https://packagist.org/packages/cmdstr/encrypt) - A simpler way to manipulate cookies in PHP #
+# [cmdstr/encrypt](https://packagist.org/packages/cmdstr/encrypt) - A simpler way to encrypt data in PHP #
 
 ### Install with Composer using `composer require cmdstr/encrypt` ###
 
@@ -55,7 +55,6 @@ $encrypt = [
 // ...
 
 // somepage.php
-require_once "config.php";
 $var = /* some value that needs encrypted */;
 
 $alphabet = [
@@ -77,7 +76,6 @@ $encryptedVar = openssl_encrypt($data, $encrypt["method"], $encrypt["passphrase"
 // ...
 
 // someotherpage.php
-require_once "config.php";
 $encryptedVar = /* retrieved encryptedVar from somepage.php */;
 $parts = explode(":", $encryptedVar);
 
