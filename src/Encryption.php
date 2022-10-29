@@ -1,6 +1,6 @@
 <?php
 
-namespace cmdstr\encrypt;
+namespace CommandString\Encrypt;
 
 use Exception;
 use InvalidArgumentException;

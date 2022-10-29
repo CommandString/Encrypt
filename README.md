@@ -1,7 +1,7 @@
 
-# [cmdstr/encrypt](https://packagist.org/packages/cmdstr/encrypt) - A simpler way to encrypt data in PHP #
+# [CommandString/Encrypt](https://packagist.org/packages/commandstring/encrypt) - A simpler way to encrypt data in PHP #
 
-### Install with Composer using `composer require cmdstr/encrypt` ###
+### Install with Composer using `composer require CommandString/Encrypt` ###
 
 ## Requirements ##
 - PHP >=8.0
@@ -11,23 +11,23 @@
 ## Basic Usage ##
 ```php
 require __DIR__"/vendor/autoload.php";
-use cmdstr/encrypt/encryption;
+use CommandString/Encrypt/Encryption;
 
 #                            v >=32 character string            v Encryption method #
-$encryptor = new encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
+$encryptor = new Encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
 
 $encryptedString = $encryptor->encrypt("Hello World"); // 2aPpxvxiUc3W3TCK:xJmkuSYDpOIOX9k=
 $decryptedString = $encryptor->decrypt($encryptedString"); // Hello World
 ```
 
-## Comparing cmdstr/encrypt to regular encrypting ##
-### cmdstr/encrypt ###
+## Comparing CommandString/Encrypt to regular encrypting ##
+### CommandString/Encrypt ###
 ```php
 // config.php
 require __DIR__"/vendor/autoload.php";
-use cmdstr/encrypt/encryption;
+use CommandString/Encrypt/Encryption;
 
-$encryptor = new encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
+$encryptor = new Encryption("MZCdg02STLzrsj05KE3SIL62SSlh2Ij", "AES-256-CTR");
 // ...
 
 // somepage.php

@@ -1,5 +1,5 @@
 {
-    "name": "cmdstr/encrypt",
+    "name": "commandstring/encrypt",
     "description": "A simpler way to encrypt data",
     "type": "library",
     "license": "MIT",
@@ -10,11 +10,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "cmdstr\\encrypt\\": "src/"
+            "CommandString\\Encrypt\\": "src/"
         }
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.1"
     }
 }
