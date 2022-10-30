@@ -57,7 +57,7 @@ class Encryption {
      */
     public function encrypt(string|int $data):string
     {
-        if (isset(Encryption::$characterCache)) {
+        if (!isset(Encryption::$characterCache)) {
             Encryption::$characterCache = [
                 ...range(0, 9),
                 ...range('a', 'z'),
