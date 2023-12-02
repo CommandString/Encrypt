@@ -8,12 +8,6 @@ use InvalidArgumentException;
 
 class Encryption {
     private static array $characterCache;
-
-    /**
-     * Passphrase key - must at least a 32 character alphanumeric string
-     * 
-     * @var string $passphrase
-     */
     private string $passphrase;
 
     /**
@@ -57,8 +51,8 @@ class Encryption {
      */
     public function encrypt(string|int $data):string
     {
-        if (!isset(Encryption::$characterCache)) {
-            Encryption::$characterCache = [
+        if (!isset(self::$characterCache)) {
+            self::$characterCache = [
                 ...range(0, 9),
                 ...range('a', 'z'),
                 ...range('A', 'Z')
@@ -70,11 +64,12 @@ class Encryption {
         $iv = '';
 
         foreach (str_split($bytes) as $byte) {
-            $offset = hexdec(bin2hex($byte)) % count(Encryption::$characterCache);
-            $iv .= Encryption::$characterCache[$offset];
+            $offset = hexdec(bin2hex($byte)) % count(self::$characterCache);
+            $iv .= self::$characterCache[$offset];
         }
 
         $encryptedString = openssl_encrypt($data, $this->encryptionMethod, $this->passphrase, 0, $iv);
+
         if ($encryptedString === false) {
             throw new Exception(sprintf("Failed to encrypt a string. Reason: %s", $this->collectErrors()));
         }
@@ -92,7 +87,7 @@ class Encryption {
      * @throws InvalidArgumentException If data is not encrypted.
      * @throws Exception If decryption fails.
      */
-    public function decrypt(string $data):string
+    public function decrypt(string $data) :string
     {
         if (!str_contains($data, ':')) {
             throw new InvalidArgumentException('Failed to decrypt data. Reason: data is not encrypted.');
@@ -101,6 +96,7 @@ class Encryption {
         list($iv, $encryptedString) = explode(":", $data);
 
         $result = openssl_decrypt($encryptedString, $this->encryptionMethod, $this->passphrase, 0, $iv);
+
         if ($result === false) {
             throw new Exception(sprintf("Failed to decrypt data. Reason: %s", $this->collectErrors()));
         }
@@ -111,6 +107,7 @@ class Encryption {
     private function collectErrors(): string
     {
         $errors = [];
+
         while ($error = openssl_error_string()) {
             $errors[] = $error;
         }
